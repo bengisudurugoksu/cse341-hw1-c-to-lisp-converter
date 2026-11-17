@@ -1,0 +1,45 @@
+Bengisu Duru Göksu
+220104004902
+                                       CSE341 Assignment 1 Report
+                                       
+Utility Functions                                       
+
+split-string: Splits a string by a given delimiter into a list of substrings.
+split-sequence: Recursively splits a string by a delimiter, returning a list of substrings.
+string-prefix-p: Checks if a given prefix exists at the beginning of a string.
+replace-string: Replaces occurrences of a substring with a new string within the given string immutably.
+replace-in-string: Applies multiple replacements on a string based on a list of pairs (old, new).
+mapconcat: Applies a function to each element in a list, concatenating the results with a separator.
+string-join: Joins a list of strings with a specified separator.                                       
+
+Line Type Detection Function   
+
+line-type: Determines the type of a line of C code using 'search' and 'cl-ppcre' and returns a symbol representing that type.                                    
+
+Conversion Functions
+
+convert-comment: Converts comments.
+convert-preprocessor: Ignores preprocessor directives.
+convert-increment-decrement: Converts increment (++) and decrement (--) operations to equivalent Lisp code.
+convert-variable-definition: Converts a variable definition and initialization to a Lisp let expression.
+convert-close-brace: Converts closing braces to closing parentheses, handling nested expressions.Also handles adding parantheses after a progn line (so if and while statements are closed correctly) to the end with the convert function.
+convert-variable-assignment: Converts variable assignments to Lisp's setf for immutability.
+convert-for: Converts a for loop to a Lisp loop expression, adjusting syntax to Lisp format.
+convert-if: Converts an if statement to Lisp format, handling logical operators in prefix notation. Uses convert-to-prefix to handle.
+convert-while: Converts a while loop to Lisp loop while syntax.
+convert-function-definition: Converts function definitions to Lisp defun, adjusting argument syntax. Uses convert-to-prefix to handle.
+convert-function-prototype: Converts function prototypes into Lisp declaim with ftype, setting argument types.
+convert-function-call: Converts function calls to Lisp calls, using the correct parentheses.
+convert-assignment-by-function-return: Converts function-return-based assignments to Lisp's setf.
+convert-operation: Replaces operators with their Lisp equivalents in arithmetic and logical expressions.
+convert-print: Converts printf statements to Lisp format calls.
+convert-return: Converts a return statement to Lisp format.
+convert-to-prefix: Converts infix expressions to prefix notation, handling operators recursively.
+convert-definition-by-function-return: Converts variable definitions initialized by a function call to Lisp let.
+
+File Handling and Main Conversion Logic
+
+read-file: Reads a file line-by-line and returns its content as a list of lines.
+write-file: Writes a list of lines to a file, each line on a new line.
+convert: Recursively processes lines, converting each based on its type, and handles nested expressions. Also handles adding parantheses after a progn line (so if and while statements are closed correctly) to the end with convert-close-brace.
+main: Reads the C file, converts it and writes it to a Lisp file using read-file, write-file and convert.
